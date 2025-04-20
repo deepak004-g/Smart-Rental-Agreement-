@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Smart Rental Agreement | Rentroverse</title>
+  <link rel="stylesheet" href="rental.css"/>
+</head>
+<body>
+
+  <!-- Loader -->
+  <div id="loader" class="loader-container">
+    <img src="loder.gif" alt="Loading..." class="loader-gif"/>
+  </div>
+
+  <!-- Main App Container -->
+  <div id="main-container">
+    
+    <!-- Home Section -->
+    <section id="home" class="section home-page active">
+      <img src="logo.png" alt="Logo" class="logo-image" />
+      <h1>Welcome to Rentroverse</h1>
+      <p>Where agreements meet technology</p>
+      <button class="next-button" onclick="showLoaderAndGo('details')">Start Agreement</button>
+    </section>
+
+    <!-- Details Form Section -->
+    <section id="details" class="section container">
+      <h2>Agreement Details</h2>
+      <form id="agreement-form">
+        <!-- Landlord Details -->
+        <div class="form-section">
+          <h3>Landlord Details</h3>
+          <label for="landlord-name">Full Name:</label>
+          <input type="text" id="landlord-name" required><br>
+
+          <label for="landlord-contact">Contact Number:</label>
+          <input type="text" id="landlord-contact" required><br>
+
+          <label for="landlord-aadhaar">Aadhaar Number:</label>
+          <input type="text" id="landlord-aadhaar" required><br>
+
+          <label for="landlord-photo">Upload Photo:</label>
+          <input type="file" id="landlord-photo" accept="image/*" required>
+        </div>
+
+        <!-- Tenant Details -->
+        <div class="form-section">
+          <h3>Tenant Details</h3>
+          <label for="tenant-name">Full Name:</label>
+          <input type="text" id="tenant-name" required><br>
+
+          <label for="tenant-contact">Contact Number:</label>
+          <input type="text" id="tenant-contact" required><br>
+
+          <label for="tenant-aadhaar">Aadhaar Number:</label>
+          <input type="text" id="tenant-aadhaar" required><br>
+
+          <label for="tenant-photo">Upload Photo:</label>
+          <input type="file" id="tenant-photo" accept="image/*" required>
+        </div>
+
+        <!-- Property Details -->
+        <div class="form-section">
+          <h3>Property Details</h3>
+          <label for="property-address">Property Address:</label>
+          <input type="text" id="property-address" required><br>
+
+          <label for="start-date">Agreement Start Date:</label>
+          <input type="date" id="start-date" required><br>
+
+          <label for="end-date">Agreement End Date:</label>
+          <input type="date" id="end-date" required><br>
+
+          <label for="monthly-rent">Monthly Rent (INR):</label>
+          <input type="text" id="monthly-rent" required><br>
+        </div>
+
+        <button type="button" onclick="showLoaderAndGo('crypto-payment')">Continue to Payment</button>
+      </form>
+    </section>
+
+    <!-- Crypto Payment Section -->
+    <section id="crypto-payment" class="section container">
+      <header>
+        <h1>Crypto Payment</h1>
+        <p>Pay rental fee securely with ETH</p>
+      </header>
+      <form id="crypto-form">
+        <div class="form-section">
+          <label for="wallet">Wallet Address:</label>
+          <input type="text" id="wallet" required>
+        </div>
+
+ 
+ 
+      </form>
+
+      <div id="payment-status"></div>
+
+
+      <br/><br/>
+
+      <button id="metamask-login">Login with MetaMask</button>
+      <button id="civic-auth-btn" style="margin-top: 20px;">Authenticate with Civic</button>
+      <br/><br/>
+      <div class="form-section">
+        <label for="amount">Amount (ETH):</label>
+        <input type="text" id="amount" required>
+        <button type="submit">Submit Payment</button>
+      </div>
+
+      <button onclick="showLoaderAndGo('agreement-output')">Preview Agreement</button>
+    </section>
+
+    <!-- Agreement Output Section -->
+    <section id="agreement-output" class="section container">
+      <div id="agreement-container">
+        <h2>Rental Agreement</h2>
+        <div id="agreement-content">
+          <h3>Landlord</h3>
+          <p id="display-landlord-name"></p>
+          <p id="display-landlord-contact"></p>
+          <p id="display-landlord-aadhaar"></p>
+          <img id="landlord-photo-preview" class="signature-image"/>
+
+          <h3>Tenant</h3>
+          <p id="display-tenant-name"></p>
+          <p id="display-tenant-contact"></p>
+          <p id="display-tenant-aadhaar"></p>
+          <img id="tenant-photo-preview" class="signature-image"/>
+
+          <h3>Property Address</h3>
+          <p id="display-address"></p>
+
+          <h3>Rent Duration</h3>
+          <p id="display-dates"></p>
+
+          <h3>Monthly Rent</h3>
+          <p id="display-rent"></p>
+        </div>
+
+        <button onclick="saveAgreementAsImage()">Download Agreement as Image</button>
+        <div class="official-note">
+          This agreement is digitally signed and recorded on the blockchain.
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <script src="html2canvas.min.js"></script>
+  <script src="rental.js"></script>
+</body>
+</html>
